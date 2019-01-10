@@ -1,0 +1,141 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the hero of the site/application.
+// -----------------------------------------------------------------------------
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 0;
+  min-height: rem(600);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  &--bottom {
+    justify-content: flex-end;
+  }
+
+  &--narrow {
+    min-height: rem(350);
+  }
+
+  &--full {
+    height: calc(100vh - 80px);
+  }
+
+  &--video {
+    height: calc(200px + (1000 - 200) * (100vw - 375px) / (1800 - 375));
+    min-height: rem(440);
+
+    @include media(">=md") {
+      height: calc(100vh - 80px);
+    }
+
+    .container {
+      z-index: 1;
+    }
+
+    .video-bg {
+      @include absolute-center;
+
+      min-width: 100%;
+      min-height: 100%;
+      max-width: unset;
+      pointer-events: none;
+
+      &-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        // padding-bottom: 56.25%; /* 16:9 */
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        // @include media(">=sm") {
+        //   height: 0;
+        // }
+      }
+
+      &-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.4));
+        z-index: 2;
+      }
+    }
+  }
+
+  &__heading {
+    color: transparent;
+    background: linear-gradient(to right, #e98e3c, #dd404c, #70c2c8);
+    background-size: 1000px 100%;
+    animation: bg-moving 4s linear infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-family: $font-tertiary;
+    margin-bottom: rem(24);
+    max-width: rem(800);
+
+    .container--center & {
+      @include block-center;
+
+      text-align: center;
+    }
+
+    .container--right & {
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
+      text-align: right;
+    }
+  }
+
+  &__lead {
+    color: rgba($color: $color-white, $alpha: 0.9);
+    font-family: $font-tertiary;
+    font-weight: $font-weight-bold;
+    margin-bottom: 3rem;
+    // max-width: rem(380);
+    width: 100%;
+
+    .container--center & {
+      @include block-center;
+
+      text-align: center;
+    }
+
+    .container--right & {
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
+      text-align: right;
+    }
+  }
+
+  &__overlay {
+    @include absolute-full;
+
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+  }
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+
+    @include media(">=md") {
+      justify-content: flex-start;
+    }
+  }
+}
+

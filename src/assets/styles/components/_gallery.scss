@@ -1,0 +1,235 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: rem(16);
+
+  &__item {
+    background-color: $color-blue;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      transition: all 1s ease-out;
+      z-index: 3;
+    }
+
+    &::before {
+      border-top: 2px solid;
+      border-left: 2px solid;
+      top: 0;
+      left: 0;
+    }
+
+    &::after {
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+      right: 0;
+      bottom: 0;
+    }
+
+    &:not(.no-hover):hover {
+      transform: scale(1.1);
+      z-index: 2;
+
+      &::before,
+      &::after {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--green {
+      &::before,
+      &::after {
+        border-color: $color-green;
+      }
+    }
+
+    &--yellow {
+      &::before,
+      &::after {
+        border-color: $color-yellow;
+      }
+    }
+
+    &--red {
+      &::before,
+      &::after {
+        border-color: $color-red;
+      }
+    }
+
+    &--blue {
+      &::before,
+      &::after {
+        border-color: $color-light-blue;
+      }
+    }
+
+    @include media(">=xs") {
+      padding-bottom: 40%;
+      width: 50%;
+    }
+
+    @include media(">md") {
+      padding-bottom: 25%;
+      width: 33.33%;
+    }
+
+    &__author {
+      display: block;
+      font-weight: $font-weight-bold;
+      letter-spacing: 0.5px;
+      margin-bottom: rem(8);
+    }
+
+    &__content {
+      @include absolute-full;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      z-index: 5;
+    }
+
+    &__cta {
+      @include flex-center;
+
+      background-color: $color-white;
+      border-radius: 8px;
+      color: $color-blue;
+      font-weight: $font-weight-bold;
+      padding: rem(16) rem(24);
+      margin: 0 rem(46);
+
+      svg {
+        margin-left: rem(16);
+
+        path {
+          stroke: $color-blue;
+        }
+      }
+    }
+
+    &__footer {
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5));
+      color: $color-white;
+      display: flex;
+      font-family: $font-primary;
+      justify-content: space-between;
+      padding: 20px;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        content: " ";
+        background-color: $color-white;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 20px;
+        width: calc(100% - 40px);
+        height: 1px;
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__lead {
+      color: $color-white;
+      font-family: $font-tertiary;
+      font-size: $font-size-3;
+      line-height: 1;
+      margin: 0 rem(46) rem(24);
+      max-width: 300px;
+
+      &__strong {
+        font-size: rem(40);
+        font-weight: $font-weight-bold;
+
+        @include media(">=sm") {
+          font-size: rem(60);
+        }
+      }
+    }
+
+    &__likes {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+
+      &__icon {
+        color: $color-white;
+        margin-right: rem(6);
+
+        &.far {
+          display: inline-block;
+        }
+
+        &.fas {
+          display: none;
+        }
+
+        .liked & {
+          &.far {
+            display: none;
+          }
+
+          &.fas {
+            color: $color-pink;
+            display: inline-block;
+          }
+        }
+
+        .gallery__item__likes:hover & {
+          color: $color-pink;
+        }
+      }
+
+      &__counter {
+        color: $color-white;
+        font-size: rem(26);
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    &__play {
+      @include absolute-center;
+
+      background-color: transparent;
+      border: none;
+      opacity: 0;
+
+      .gallery__item:hover & {
+        opacity: 1;
+      }
+    }
+
+    &__small {
+      font-size: rem(12);
+
+      & + & {
+        border-left: 1px solid $color-white;
+        margin-left: rem(10);
+        padding-left: rem(10);
+      }
+    }
+  }
+}

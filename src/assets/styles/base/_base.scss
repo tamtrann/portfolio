@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  @extend %transition--default;
+
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-secondary);
+}
+
+main {
+  position: relative;
+  overflow-x: hidden;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+// #cursor {
+//   background-color: red;
+//   width: rem(24);
+//   height: rem(24);
+//   position: absolute;
+//   z-index: 1000;
+// }

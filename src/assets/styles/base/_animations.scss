@@ -1,0 +1,149 @@
+// ----------------------------------------------------------------
+// This file contains all animation styles of the site/application.
+// ----------------------------------------------------------------
+.v-scroll-reveal {
+  visibility: hidden;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s;
+}
+
+.page-leave-active {
+  transition-delay: 0.4s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 1;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  @extend %transition--default;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.slide-fade-right-enter-active {
+  @extend %animation--default;
+
+  animation-name: slide-fade-right;
+  animation-direction: reverse;
+}
+
+.slide-fade-right-leave-active {
+  @extend %animation--default;
+
+  animation-name: slide-fade-right;
+}
+
+.slide-fade-left-enter-active {
+  @extend %animation--default;
+
+  animation-name: slide-fade-left;
+  animation-direction: reverse;
+}
+
+.slide-fade-left-leave-active {
+  @extend %animation--default;
+
+  animation-name: slide-fade-left;
+}
+
+.to-appear {
+  opacity: 0;
+
+  &--theme {
+    &::after {
+      background-color: var(--color-primary);
+    }
+  }
+
+  &--gray {
+    &::after {
+      background-color: $color-gray;
+    }
+  }
+}
+
+.appear,
+.appear::after {
+  animation-iteration-count: 1;
+  animation-duration: 0.8s;
+}
+
+.appear {
+  filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
+  position: relative;
+  user-select: none;
+  animation-name: appear;
+  animation-fill-mode: both;
+  cursor: default;
+  opacity: 1;
+
+  &::after {
+    @include absolute-full;
+
+    content: "";
+    z-index: 999;
+    // background-color: var(--color-primary);
+    // box-shadow: 0 10px 42px 0 rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+    animation-name: appear-overlay;
+    animation-fill-mode: both;
+  }
+}
+
+.to-disappear {
+  &--heading {
+    &::after {
+      background-color: var(--color-heading);
+    }
+  }
+
+  &--text {
+    &::after {
+      background-color: var(--color-text);
+    }
+  }
+}
+
+.disappear,
+.disappear::after {
+  animation-iteration-count: 1;
+  animation-duration: 0.8s;
+}
+
+.disappear {
+  filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
+  position: relative;
+  user-select: none;
+  animation-name: appear;
+  animation-direction: reverse;
+  animation-fill-mode: both;
+  cursor: default;
+
+  &::after {
+    @include absolute-full;
+
+    content: "";
+    z-index: 999;
+    // background-color: var(--color-primary);
+    filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+    animation-name: appear-overlay;
+    animation-direction: reverse;
+    animation-fill-mode: both;
+  }
+}

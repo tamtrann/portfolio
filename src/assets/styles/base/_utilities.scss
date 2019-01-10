@@ -1,0 +1,69 @@
+// ----------------------------------------------------------
+// This file contains all utilities of the site/application.
+// ----------------------------------------------------------
+
+.p-r {
+  position: relative;
+}
+
+.justify-content {
+  &-center {
+    justify-content: center !important;
+  }
+}
+
+.w {
+  &-auto {
+    width: auto !important;
+
+    &-sm {
+      @include media(">=sm") {
+        width: auto !important;
+      }
+    }
+  }
+}
+
+.d {
+  &-none {
+    display: none !important;
+
+    &-sm {
+      @include media(">=sm") {
+        display: none !important;
+      }
+    }
+  }
+
+  &-inline-flex {
+    display: inline-flex !important;
+
+    &-sm {
+      @include media(">=sm") {
+        display: inline-flex !important;
+      }
+    }
+  }
+}
+
+.mb {
+  &-1 {
+    margin-bottom: rem(8);
+  }
+
+  &-2 {
+    margin-bottom: rem(16);
+  }
+
+  &-3 {
+    margin-bottom: rem(24);
+  }
+
+  &-4 {
+    margin-bottom: rem(32);
+  }
+}
+
+.hidden {
+  transform: scaleY(0);
+}

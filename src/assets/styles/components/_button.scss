@@ -1,0 +1,218 @@
+// ------------------------------------------------------------------------------------------
+// This file contains all styles related to the button's basic style of the site/application.
+// ------------------------------------------------------------------------------------------
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  position: relative;
+
+  svg {
+    overflow: visible;
+  }
+
+  &--default {
+    border: solid 1px var(--color-primary);
+    color: var(--color-primary);
+    padding: rem(8) rem(16);
+    position: relative;
+
+    &::before {
+      content: "";
+      background-color: var(--color-primary);
+      width: 100%;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .btn__text {
+      color: var(--color-primary);
+    }
+
+    .btn__hidden {
+      clip-path: inset(0 100% 0 0);
+      color: $color-white;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .btn__hidden {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  &--icon {
+    padding: 0;
+
+    &::before {
+      content: "";
+      background-color: var(--color-primary);
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      right: 70px;
+      width: 40%;
+      height: 1px;
+    }
+
+    .btn__text {
+      color: $color-white;
+      margin-right: 10px;
+    }
+
+    .arrow {
+      .circle,
+      .head,
+      .shaft,
+      .triangle {
+        transition-delay: 0.2s;
+      }
+
+      .circle {
+        stroke: var(--color-primary);
+        stroke-dasharray: 106;
+        stroke-dashoffset: -10px;
+        transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.25s;
+      }
+
+      .head {
+        opacity: 0;
+        stroke: var(--color-primary);
+        transform: translateX(19px);
+      }
+
+      .shaft {
+        stroke: var(--color-primary);
+        stroke-dasharray: 40;
+      }
+
+      .triangle {
+        fill: var(--color-primary);
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      &::before {
+        right: 21%;
+        width: 0;
+      }
+
+      .arrow {
+        .circle {
+          stroke-dasharray: 125;
+          stroke-dashoffset: 0;
+        }
+
+        .head {
+          opacity: 1;
+        }
+
+        .shaft {
+          stroke-dashoffset: -40px;
+        }
+
+        .triangle {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  & ~ .btn {
+    margin-left: 1rem;
+  }
+
+  &-wrapper {
+    display: flex;
+    margin-bottom: 3rem;
+    width: 100%;
+
+    .container--center & {
+      justify-content: center;
+    }
+
+    .container--right & {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.mouse {
+  @include flex-center;
+
+  position: relative;
+  margin: 0 auto 14px;
+  // width: rem(15);
+  // height: rem(25);
+  // border: 1px solid $color-white;
+  // border-radius: 30px;
+
+  // @include media(">=sm") {
+  //   width: rem(20);
+  //   height: rem(35);
+  // }
+
+  &-container {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    display: block;
+    z-index: 2;
+
+    @include media(">=sm") {
+      position: absolute;
+      left: 50%;
+      bottom: 3rem;
+      transform: translateX(-50%);
+
+      .hero--bottom & {
+        position: static;
+        transform: none;
+      }
+    }
+  }
+
+  &-text {
+    display: block;
+    color: $color-white;
+    font-size: rem(12);
+    font-weight: $font-weight-bold;
+    // margin-bottom: rem(14);
+    text-align: center;
+  }
+
+  .scroll-down {
+    display: block;
+    margin: 15% auto auto;
+    width: 4px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-white;
+    animation: scroll-inner 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+  }
+}

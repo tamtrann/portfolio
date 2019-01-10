@@ -1,0 +1,34 @@
+.progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: rem(40);
+
+  @include media(">=sm") {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  &__bar {
+    background-color: rgba($color: $color-white, $alpha: 0.2);
+    margin: 0 rem(20);
+    width: 150px;
+    height: 1px;
+
+    &__inner {
+      background-color: var(--color-primary);
+      height: 2px;
+    }
+  }
+
+  &__start {
+    color: var(--color-primary);
+    font-family: $font-primary;
+  }
+
+  &__end {
+    color: var(--color-text);
+    font-family: $font-primary;
+    opacity: var(--color-transparency);
+  }
+}

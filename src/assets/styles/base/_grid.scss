@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media(">=xs") {
+    max-width: 540px;
+  }
+
+  @include media(">=sm") {
+    max-width: 720px;
+  }
+
+  @include media(">=md") {
+    max-width: 960px;
+  }
+
+  @include media(">=lg") {
+    max-width: 1140px;
+  }
+
+  @include media(">=xl") {
+    max-width: 1280px;
+  }
+
+  @include media(">=xxl") {
+    max-width: 1600px;
+  }
+
+  &-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.col {
+  &-center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.row {
+  @include make-row();
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@include make-grid-columns();

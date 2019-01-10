@@ -1,0 +1,10 @@
+:root {
+  @include css-vars((
+    --color-primary: $color-yellow,
+    --color-secondary: $color-black,
+    --color-heading: $color-yellow,
+    --color-text: $color-white,
+    --color-transparency: 0.5,
+    --text-letter-spacing: 4px
+  ));
+}

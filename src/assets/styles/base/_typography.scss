@@ -1,0 +1,123 @@
+// ----------------------------------------------------------------------------------
+// This file contains all styles related to the basic typography style for copy text.
+// ----------------------------------------------------------------------------------
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+}
+
+h1 {
+  font-size: $font-size-h1;
+  letter-spacing: $letter-spacing-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+  letter-spacing: $letter-spacing-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+  letter-spacing: $letter-spacing-h3;
+}
+
+p {
+  color: var(--color-text);
+  font-family: $font-primary;
+  font-size: $font-size-p;
+  font-weight: $font-weight-normal;
+  letter-spacing: $letter-spacing-p;
+  line-height: 1.5;
+}
+
+small {
+  color: var(--color-text);
+  font-size: $font-size-sm;
+  letter-spacing: $letter-spacing-sm;
+}
+
+a {
+  font-family: $font-primary;
+  font-size: $font-size-p;
+  font-weight: $font-weight-light;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+span {
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+label,
+li {
+  color: var(--color-text);
+  font-family: $font-primary;
+  font-size: $font-size-p;
+  font-weight: $font-weight-normal;
+}
+
+textarea {
+  resize: none !important;
+}
+
+input,
+textarea {
+  border: solid 1px $color-gray;
+  border-radius: 0;
+  font-family: $font-primary;
+  font-size: $font-size-p;
+  font-weight: $font-weight-medium;
+  width: 100%;
+
+  @include placeholder {
+    color: rgba($color: var(--color-text), $alpha: 0.5);
+    font-family: $font-primary;
+    font-size: $font-size-p;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+button {
+  cursor: pointer;
+  font-family: $font-primary;
+  font-size: $font-size-p;
+  font-weight: $font-weight-bold;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.letter {
+  &-wrapper {
+    overflow: hidden;
+  }
+
+  &-effect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

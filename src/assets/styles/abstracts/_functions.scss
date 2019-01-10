@@ -1,0 +1,106 @@
+@function rem($pixels, $context: $font-size-base) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+///
+// Assigns a variable to the global map
+///
+@function _cssvarassign($varName: null, $varValue: null) {
+  // CHECK PARAMS
+  @if ($varName == null) {
+    @error "Variable name is expected, instead got: null";
+  }
+
+  @if ($varValue == null) {
+    @error "Variable value is expected, instead got: null";
+  }
+
+  // assign to the global map
+  @if ($css-vars-debug-log and map-get($css-vars, $varName)) {
+    @debug "'#{$varName}' variable is reassigned";
+  }
+
+  @return map-merge($css-vars, ($varName: $varValue));
+}
+
+@function var($args...) {
+  // CHECK PARAMS
+  @if (length($args) == 0) {
+    @error "Variable name is expected to be passed to the var() function";
+  }
+
+  @if (str-length(nth($args, 1)) < 2 or str-slice(nth($args, 1), 0, 2) != '--') {
+    @error "Variable name is expected to start from '--'";
+  }
+  // PROCESS
+  $varName: nth($args, 1);
+  $varValue: map-get($css-vars, $varName);
+
+  @if ($css-vars-debug-log or not $css-vars-use-native) { // Sass or debug
+    @if ($varValue == null) { // variable is not provided so far
+      @if (length($args) == 2) { // the default value is passed
+        @if ($css-vars-debug-log) {
+          @debug "Provided default value is used for the variable: '#{$varName}'";
+        }
+        $varValue: nth($args, 2);
+      }
+
+      @else if ($css-vars-debug-log) {
+        @debug "Variable '#{$varName}' is not assigned";
+
+        @if (not $css-vars-use-native) {
+          @debug "The 'var(#{$varName}...)' usage will be skipped in the output CSS";
+        }
+      }
+    }
+  }
+
+  @if ($css-vars-use-native) { // CSS variables
+    // Native CSS: don't process function in case of native
+    @return unquote('var(' + $args + ')');
+  }
+
+  @else {
+    // Sass: return value from the map
+    @return $varValue;
+  }
+}
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@function breakpoint-next($name, $breakpoints: $breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $breakpoints) {
+  $min: map-get($breakpoints, $name);
+
+  @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+
+  @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
