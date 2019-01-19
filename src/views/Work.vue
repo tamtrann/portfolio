@@ -34,7 +34,7 @@
                 .progress__bar
                   .progress__bar__inner(:style="{width: progressWidth}")
                 span.progress__end {{ projects.length | zeroPrefix }}
-        .to-appear#swiper
+        #swiper
           project-slider(:projects="projects" @slideChange="onSlideChange")
 </template>
 
@@ -92,24 +92,27 @@ export default {
       return `${(this.currentIndex + 1) / this.projects.length * 100}%`;
     },
   },
-  watch: {
-    currentIndex(newValue) {
-      // let { title } = this.$refs;
-      console.log(this.projects[newValue].name);
-      // TweenLite.to(title, 0.5, { text: { value: this.projects[newValue].name, oldClass: 'a', newClass: 'b' }, ease: Linear.easeNone });
-    },
-  },
+  // watch: {
+  //   currentIndex(newValue) {
+  //     let { title } = this.$refs;
+  //     console.log(this.projects[newValue].name);
+  //     TweenLite.to(title, 0.5, { text: { value: this.projects[newValue].name, oldClass: 'a', newClass: 'b' }, ease: Linear.easeNone });
+  //   },
+  // },
   mounted() {
-    TweenMax.staggerFrom('.swiper-slide', 1, {
-      scale: 0.9, opacity: 0, delay: 0.5, ease: Power3.easeOut, force3D: true,
-    }, 0.1);
     this.revealElements(this.$el);
+    TweenMax.staggerFrom('.swiper-slide', 1, {
+      scale: 0.9, opacity: 0, delay: 1, ease: Power3.easeOut, force3D: true,
+    }, 0.1);
   },
   beforeRouteLeave(to, from, next) {
     this.hideElements(this.$el);
+    TweenMax.staggerTo('.swiper-slide', 1, {
+      scale: 0.9, opacity: 0, ease: Power3.easeOut, force3D: true,
+    }, 0.1);
     setTimeout(() => {
       next();
-    }, 800);
+    }, 1600);
   },
   methods: {
     onSlideChange(index) {

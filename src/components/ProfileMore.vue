@@ -27,9 +27,3 @@
         li.profile__more__list__item Adobe Illustrator
         li.profile__more__list__item Adobe XD
 </template>
-
-<script>
-export default {
-
-};
-</script>

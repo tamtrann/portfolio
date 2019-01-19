@@ -1,12 +1,12 @@
 //-----------------
 // # EMBEDDED FONTS
 //-----------------
-@include font-face("Avenir", "~/assets/fonts/Avenir/Avenir-Medium", 500, null, woff);
-@include font-face("Avenir", "~/assets/fonts/Avenir/Avenir-Heavy", 900, null, woff);
-@include font-face("Tiempos Headline", "~/assets/fonts/TiemposHeadline/TiemposHeadline-Bold", 700, null, woff);
+@include font-face("Avenir", "~@/assets/fonts/Avenir/Avenir-Medium", 500, null, woff);
+@include font-face("Avenir", "~@/assets/fonts/Avenir/Avenir-Heavy", 900, null, woff);
+@include font-face("Tiempos Headline", "~@/assets/fonts/TiemposHeadline/TiemposHeadline-Bold", 700, null, woff);
 
-$font-primary: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-secondary: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-primary: "Avenir";
+$font-secondary: "Tiempos Headline";
 //-----------------
 // @include-media
 //-----------------

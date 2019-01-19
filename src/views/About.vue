@@ -6,7 +6,7 @@
           .row
             template(v-for="(item, index) in profiles")
                 // transition(mode="out-in" :name="'slide-fade-' + item.direction")
-                profile(:profile="item" @loadMore="onLoadMore(index)" v-show="index !== hiddenProfile" ref="profile" :key="index")
+                profile(:profile="item" @loadMore="onLoadMore" v-show="index !== hiddenProfile" ref="profile" :key="index")
             .col-md-6(v-show="showMore")
               h2.profile__more__heading about
               profile-more(ref="more")
@@ -80,17 +80,22 @@ export default {
     };
   },
   mounted() {
-    this.revealElements(this.$el);
+    const profiles = document.querySelectorAll('.profile');
+    profiles.forEach((profile) => {
+      this.revealElements(profile);
+    });
   },
   beforeRouteLeave(to, from, next) {
-    this.hideElements(this.$el);
+    const profiles = document.querySelectorAll('.profile');
+    profiles.forEach((profile) => {
+      this.hideElements(profile);
+    });
     setTimeout(() => {
       next();
-    }, 800);
+    }, 1800);
   },
   methods: {
-    onLoadMore(index) {
-      console.log(index);
+    onLoadMore() {
       this.$router.replace('/detail');
     },
     // onLoadMore(index) {

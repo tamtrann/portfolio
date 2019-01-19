@@ -58,6 +58,8 @@
 
 .to-appear {
   opacity: 0;
+  pointer-events: none;
+  transition: none;
 
   &--theme {
     &::after {
@@ -73,7 +75,9 @@
 }
 
 .appear,
-.appear::after {
+.appear::after,
+.disappear,
+.disappear::after {
   animation-iteration-count: 1;
   animation-duration: 0.8s;
 }
@@ -92,8 +96,6 @@
 
     content: "";
     z-index: 999;
-    // background-color: var(--color-primary);
-    // box-shadow: 0 10px 42px 0 rgba(0, 0, 0, 0.5);
     filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
     transform: scaleX(0);
     transform-origin: 0 50%;
@@ -104,6 +106,8 @@
 }
 
 .to-disappear {
+  transition: none;
+  
   &--heading {
     &::after {
       background-color: var(--color-heading);
@@ -115,12 +119,6 @@
       background-color: var(--color-text);
     }
   }
-}
-
-.disappear,
-.disappear::after {
-  animation-iteration-count: 1;
-  animation-duration: 0.8s;
 }
 
 .disappear {
@@ -137,7 +135,6 @@
 
     content: "";
     z-index: 999;
-    // background-color: var(--color-primary);
     filter: drop-shadow(0 10px 42px 0 rgba(0, 0, 0, 0.5));
     transform: scaleX(0);
     transform-origin: 0 50%;

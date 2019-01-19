@@ -3,6 +3,7 @@
     .swiper-slide(v-for='(project, index) in projects' :key='index')
       .swiper-img
         img.swiper-lazy(:src='project.img')
+    //- .swiper-pagination(slot="pagination")
 </template>
 
 <script>
@@ -20,16 +21,20 @@ export default {
       swiperOption: {
         // autoHeight: true,
         // centeredSlides: true,
-        freeMode: true,
+        // freeMode: true,
         grabCursor: true,
         lazy: true,
         mousewheel: true,
-        slidesPerView: 4,
+        slidesPerView: 3.5,
         spaceBetween: 20,
-        freeModeSticky: true,
-        preloadImages: false,
+        // freeModeSticky: true,
+        preloadImages: true,
         slidesOffsetBefore: 100,
         loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
         on: {
           // init () {
           //   let swiper = document.getElementById('swiper')
@@ -64,9 +69,10 @@ export default {
 
 <style lang="scss">
 .swiper {
-  /* &-container {
+  &-container {
     overflow: visible !important;
-  } */
+    max-height: 400px;
+  }
 
   &-img {
     max-width: 100%;
@@ -88,7 +94,7 @@ export default {
       content: "";
       background-color: var(--color-secondary);
       display: block;
-      opacity: 0.5;
+      opacity: 0.75;
       z-index: 1;
     }
 
@@ -106,8 +112,8 @@ export default {
     }
 
     &-active {
-      /* margin-right: 100px !important;
-      transform: scale(1.2) translate3d(0px, 0px, 0px) !important; */
+      /* margin-right: 100px !important; */
+      /* transform: scale(1.2) translate3d(0px, 0px, 0px) !important; */
 
       &::before {
         opacity: 0;

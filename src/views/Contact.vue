@@ -55,8 +55,11 @@ export default {
   mounted() {
     this.revealElements(this.$el);
   },
-  beforeDestroy() {
+  beforeRouteLeave(to, from, next) {
     this.hideElements(this.$el);
+    setTimeout(() => {
+      next();
+    }, 1800);
   },
 };
 </script>

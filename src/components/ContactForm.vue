@@ -1,15 +1,15 @@
 <template lang="pug">
   form.form(action="/")
-    .form__group.to-appear
+    .form__group.to-appear.to-appear--gray
       label.form__label my name is
       input.form__input(type="text" placeholder="..." v-model="name")
-    .form__group.to-appear
+    .form__group.to-appear.to-appear--gray
       label.form__label email
       input.form__input(type="email" placeholder="..." v-model="email")
-    .form__group.to-appear
+    .form__group.to-appear.to-appear--gray
       label.form__label message
       input.form__input(type="text" placeholder="Tell us something..." v-model="message")
-    button.btn.btn--icon.form__btn.to-appear(type="submit")
+    button.btn.btn--icon.form__btn.to-appear.to-appear--theme(type="submit")
       span.btn__text send
       svg(width='60px', height='46px', viewbox='0 0 60 42', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
         defs

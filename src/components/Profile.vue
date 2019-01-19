@@ -54,7 +54,6 @@ export default {
   transition: none;
   position: relative;
   z-index: 1;
-  // align-items: flex-start;
 
   & + & {
     margin-top: rem(60);
@@ -103,7 +102,6 @@ export default {
     background-color: transparent;
     filter: drop-shadow(0 10px 42px rgba(0, 0, 0, 0.5));
     mix-blend-mode: luminosity;
-    /* box-shadow: 0 10px 42px 0 rgba(0, 0, 0, 0.5); */
     background-blend-mode: overlay;
     width: 0;
     height: 320px;
@@ -115,14 +113,14 @@ export default {
 
     &__inner {
       // background-color: var(--color-primary);
-      clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+      /* clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); */
       overflow: hidden;
       width: 100%;
       height: 100%;
 
-      // .profile--right & {
-      //   transform: scaleX(-1);
-      // }
+      /* .profile--right & {
+        transform: scaleX(-1);
+      } */
 
       img {
         width: 100%;

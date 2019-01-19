@@ -54,13 +54,19 @@ export default {
     };
   },
   mounted() {
-    this.revealElements(this.$el);
+    const profile = document.querySelector('.profile');
+    const more = document.querySelector('.profile__more');
+    this.revealElements(profile);
+    this.revealElements(more);
   },
   beforeRouteLeave(to, from, next) {
-    this.hideElements(this.$el);
+    const profile = document.querySelector('.profile');
+    const more = document.querySelector('.profile__more');
+    this.hideElements(profile);
+    this.hideElements(more);
     setTimeout(() => {
       next();
-    }, 800);
+    }, 1800);
   },
 };
 </script>

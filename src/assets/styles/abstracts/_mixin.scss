@@ -126,7 +126,7 @@ $css-vars-debug-log: false !default;
     font-family: quote($name);
     font-style: $style;
     font-weight: $weight;
-    src: $src;
+    src: url($src);
   }
 }
 
